@@ -64,3 +64,10 @@ Master_SSL_Verify_Server_Cert: No
                 Auto_Position: 0
 1 row in set (0.00 sec)
 ```
+### verfiy /var/log/mysqld.log
+```
+es not guarantee that the relay log info will be consistent, Error_code: 0
+2017-06-19 19:23:09 11533 [Note] Slave SQL thread initialized, starting replication in log 'mysqld-bin.000002' at position 325, relay log './mysqld-relay-bin.000001' position: 4
+2017-06-19 19:23:09 11533 [Note] Slave I/O thread: connected to master 'root@master:3306',replication started in log 'mysqld-bin.000002' at position 325
+
+```
