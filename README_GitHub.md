@@ -32,6 +32,8 @@ If this completes successfully, you can browse your GitHub repo to
 see the files have copied to it. If this did not work as expected,
 please consult with an instructor.
 
+
+
 As stated in `README.md`, **DO NOT** add or change files directly
 on your GitHub repo.  Make all file changes locally and push them.
 This routine will avoid synchronization problems that can occur
