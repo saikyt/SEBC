@@ -1,2 +1,2 @@
-# cloudera-install-bootcamp
+# SEBC
 Cloudera admin boot camp repo
