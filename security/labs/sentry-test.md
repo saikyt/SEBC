@@ -117,3 +117,68 @@ INFO  : OK
 No rows affected (0.097 seconds)
 0: jdbc:hive2://edgenode:10000/default>
 ```
+
+## show tables for user ferdinand
+```
+[root@edgenode ec2-user]# sudo su ferdinand
+[ferdinand@edgenode ec2-user]$ kinit
+Password for ferdinand@HADOOP.COM:
+[ferdinand@edgenode ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.9.2 by Apache Hive
+beeline>  !connect jdbc:hive2://edgenode:10000/default;principal=hive/edgenode@H                                                                                                    ADOOP.COM
+scan complete in 2ms
+Connecting to jdbc:hive2://edgenode:10000/default;principal=hive/edgenode@HADOOP                                                                                                    .COM
+Connected to: Apache Hive (version 1.1.0-cdh5.9.2)
+Driver: Hive JDBC (version 1.1.0-cdh5.9.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+
+0: jdbc:hive2://edgenode:10000/default> show tables;
+INFO  : Compiling command(queryId=hive_20170622190202_9001d52f-d71b-4a61-9a06-83ad7376a68d): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622190202_9001d52f-d71b-4a61-9a06-83ad7376a68d); Time taken: 0.053 seconds
+INFO  : Executing command(queryId=hive_20170622190202_9001d52f-d71b-4a61-9a06-83ad7376a68d): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622190202_9001d52f-d71b-4a61-9a06-83ad7376a68d); Time taken: 0.101 seconds
+INFO  : OK
++------------+--+
+|  tab_name  |
++------------+--+
+| sample_07  |
++------------+--+
+1 row selected (0.173 seconds)
+0: jdbc:hive2://edgenode:10000/default>
+```
+## Show tables for george - see all tables;
+
+```
+[ec2-user@edgenode ~]$ sudo su george
+[george@edgenode ec2-user]$ kinit
+Password for george@HADOOP.COM:
+[george@edgenode ec2-user]$ beeline
+Beeline version 1.1.0-cdh5.9.2 by Apache Hive
+beeline> !connect jdbc:hive2://edgenode:10000/default;principal=hive/edgenode@HADOOM.COM
+scan complete in 2ms
+Connecting to jdbc:hive2://edgenode:10000/default;principal=hive/edgenode@HADOOM.COM
+Connected to: Apache Hive (version 1.1.0-cdh5.9.2)
+Driver: Hive JDBC (version 1.1.0-cdh5.9.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://edgenode:10000/default> show tables;
+INFO  : Compiling command(queryId=hive_20170622190303_e7f1e209-5e90-4be6-a4b2-51be2cb16bac): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622190303_e7f1e209-5e90-4be6-a4b2-51be2cb16bac); Time taken: 0.059 seconds
+INFO  : Executing command(queryId=hive_20170622190303_e7f1e209-5e90-4be6-a4b2-51be2cb16bac): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622190303_e7f1e209-5e90-4be6-a4b2-51be2cb16bac); Time taken: 0.123 seconds
+INFO  : OK
++------------+--+
+|  tab_name  |
++------------+--+
+| sai_test   |
+| sample_07  |
++------------+--+
+2 rows selected (0.289 seconds)
+0: jdbc:hive2://edgenode:10000/default>
+
+```
