@@ -42,3 +42,78 @@ No rows selected (2.222 seconds)
 0: jdbc:hive2://edgenode:10000/default>
 
 ```
+## login as admin user and create roles
+
+```
+0: jdbc:hive2://edgenode:10000/default> create role reads;
+INFO  : Compiling command(queryId=hive_20170622184242_14d3c522-8cf5-46bd-819f-648db0e6b300): create role reads
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184242_14d3c522-8cf5-46bd-819f-648db0e6b300); Time taken: 0.054 seconds
+INFO  : Executing command(queryId=hive_20170622184242_14d3c522-8cf5-46bd-819f-648db0e6b300): create role reads
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184242_14d3c522-8cf5-46bd-819f-648db0e6b300); Time taken: 0.04 seconds
+INFO  : OK
+No rows affected (0.105 seconds)
+0: jdbc:hive2://edgenode:10000/default> create role writes;
+INFO  : Compiling command(queryId=hive_20170622184242_86c358aa-7465-4aa1-94a9-83e38d76e232): create role writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184242_86c358aa-7465-4aa1-94a9-83e38d76e232); Time taken: 0.054 seconds
+INFO  : Executing command(queryId=hive_20170622184242_86c358aa-7465-4aa1-94a9-83e38d76e232): create role writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184242_86c358aa-7465-4aa1-94a9-83e38d76e232); Time taken: 0.025 seconds
+INFO  : OK
+No rows affected (0.091 seconds)
+0: jdbc:hive2://edgenode:10000/default> GRANT SELECT ON DATABASE default TO ROLE reads;
+INFO  : Compiling command(queryId=hive_20170622184646_19f0abe8-36f5-4c55-a74d-8a409951b064): GRANT SELECT ON DATABASE default TO ROLE reads
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184646_19f0abe8-36f5-4c55-a74d-8a409951b064); Time taken: 0.059 seconds
+INFO  : Executing command(queryId=hive_20170622184646_19f0abe8-36f5-4c55-a74d-8a409951b064): GRANT SELECT ON DATABASE default TO ROLE reads
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184646_19f0abe8-36f5-4c55-a74d-8a409951b064); Time taken: 0.039 seconds
+INFO  : OK
+No rows affected (0.108 seconds)
+0: jdbc:hive2://edgenode:10000/default> GRANT ROLE reads TO GROUP selector;
+INFO  : Compiling command(queryId=hive_20170622184646_61304f9b-c7c2-49b9-91ed-2b42c7fac800): GRANT ROLE reads TO GROUP selector
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184646_61304f9b-c7c2-49b9-91ed-2b42c7fac800); Time taken: 0.052 seconds
+INFO  : Executing command(queryId=hive_20170622184646_61304f9b-c7c2-49b9-91ed-2b42c7fac800): GRANT ROLE reads TO GROUP selector
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184646_61304f9b-c7c2-49b9-91ed-2b42c7fac800); Time taken: 0.038 seconds
+INFO  : OK
+No rows affected (0.102 seconds)
+0: jdbc:hive2://edgenode:10000/default> REVOKE ALL ON DATABASE default FROM ROLE writes;
+INFO  : Compiling command(queryId=hive_20170622184747_a60b14f7-16f5-4583-92ff-208decf9489b): REVOKE ALL ON DATABASE default FROM ROLE writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184747_a60b14f7-16f5-4583-92ff-208decf9489b); Time taken: 0.054 seconds
+INFO  : Executing command(queryId=hive_20170622184747_a60b14f7-16f5-4583-92ff-208decf9489b): REVOKE ALL ON DATABASE default FROM ROLE writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184747_a60b14f7-16f5-4583-92ff-208decf9489b); Time taken: 0.083 seconds
+INFO  : OK
+No rows affected (0.15 seconds)
+0: jdbc:hive2://edgenode:10000/default> GRANT SELECT ON default.sample_07 TO ROLE writes;
+INFO  : Compiling command(queryId=hive_20170622184747_ac4be058-5bbd-4e60-af20-2a8614dff724): GRANT SELECT ON default.sample_07 TO ROLE writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184747_ac4be058-5bbd-4e60-af20-2a8614dff724); Time taken: 0.053 seconds
+INFO  : Executing command(queryId=hive_20170622184747_ac4be058-5bbd-4e60-af20-2a8614dff724): GRANT SELECT ON default.sample_07 TO ROLE writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184747_ac4be058-5bbd-4e60-af20-2a8614dff724); Time taken: 0.041 seconds
+INFO  : OK
+No rows affected (0.105 seconds)
+0: jdbc:hive2://edgenode:10000/default> GRANT ROLE writes TO GROUP inserters;
+INFO  : Compiling command(queryId=hive_20170622184747_716797fe-28a2-4538-a825-9d809047ec9f): GRANT ROLE writes TO GROUP inserters
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20170622184747_716797fe-28a2-4538-a825-9d809047ec9f); Time taken: 0.051 seconds
+INFO  : Executing command(queryId=hive_20170622184747_716797fe-28a2-4538-a825-9d809047ec9f): GRANT ROLE writes TO GROUP inserters
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20170622184747_716797fe-28a2-4538-a825-9d809047ec9f); Time taken: 0.035 seconds
+INFO  : OK
+No rows affected (0.097 seconds)
+0: jdbc:hive2://edgenode:10000/default>
+```
