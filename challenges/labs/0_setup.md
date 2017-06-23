@@ -5,20 +5,25 @@ AWS
 ```
 * List your instances by IP address and DNS name (don't use /etc/hosts for this)
 ```
+ec2-34-193-87-160.compute-1.amazonaws.com
+34.193.87.160
+edgenode
+
 ec2-34-193-151-84.compute-1.amazonaws.com
 34.193.151.84
+master
 
 ec2-34-193-72-133.compute-1.amazonaws.com
 34.193.72.133
-
-ec2-34-193-87-160.compute-1.amazonaws.com
-34.193.87.160
+snn
 
 ec2-34-198-155-222.compute-1.amazonaws.com
 34.198.155.222
+dn1
 
 ec2-34-198-170-245.compute-1.amazonaws.com
 34.198.170.245
+dn2
 ```
 * List the Linux release you are using
 
