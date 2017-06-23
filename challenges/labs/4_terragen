@@ -1,0 +1,54 @@
+## Terra gen command
+
+```
+time hadoop jar  /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=12 -D dfs.block.size=33554432 -Dyarn.nodemanager.resource.memory-mb=512 65536000 tgen
+```
+
+## Result of the time command
+
+```
+real    1m23.803s
+user    1m19.047s
+sys     0m1.757s
+
+```
+## result of hdfs ls 
+
+```
+[saturn@master cmf]$ hdfs dfs -ls /user/saturn/tgen
+Found 2 items
+-rw-r--r--   3 saturn planet          0 2017-06-23 14:41 /user/saturn/tgen/_SUCCESS
+-rw-r--r--   3 saturn planet 6553600000 2017-06-23 14:41 /user/saturn/tgen/part-m-00000
+
+```
+## result of fsck
+
+```
+[saturn@master cmf]$ hadoop fsck -blocks /user/saturn
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+Connecting to namenode via http://master:50070
+FSCK started by saturn (auth:SIMPLE) from /172.31.42.86 for path /user/saturn at Fri Jun 23 14:44:41 EDT 2017
+..Status: HEALTHY
+ Total size:    6553600000 B
+ Total dirs:    2
+ Total files:   2
+ Total symlinks:                0
+ Total blocks (validated):      196 (avg. block size 33436734 B)
+ Minimally replicated blocks:   196 (100.0 %)
+ Over-replicated blocks:        0 (0.0 %)
+ Under-replicated blocks:       0 (0.0 %)
+ Mis-replicated blocks:         0 (0.0 %)
+ Default replication factor:    3
+ Average block replication:     3.0
+ Corrupt blocks:                0
+ Missing replicas:              0 (0.0 %)
+ Number of data-nodes:          4
+ Number of racks:               1
+FSCK ended at Fri Jun 23 14:44:41 EDT 2017 in 8 milliseconds
+
+
+The filesystem under path '/user/saturn' is HEALTHY
+
+```
