@@ -52,3 +52,16 @@ rhui-REGION-rhel-server-rh-common/7Server/x86_64 Red Hat Enterprise Linux    228
 repolist: 14,707
 
 ```
+# User and group details
+
+```
+[root@master cmf]# cat /etc/passwd | grep saturn
+saturn:x:2800:1002::/home/saturn:/bin/bash
+[root@master cmf]# cat /etc/passwd | grep haley
+haley:x:2900:1001::/home/haley:/bin/bash
+[root@master cmf]# cat /etc/group | grep planet
+planets:x:1002:
+[root@master cmf]# cat /etc/group | grep comets
+comets:x:1001:
+[root@master cmf]#
+```
