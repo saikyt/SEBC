@@ -1,5 +1,8 @@
 * List the cloud provider you are using (AWS, GCE, Azure, CloudCat, other)
+```
 AWS
+
+```
 * List your instances by IP address and DNS name (don't use /etc/hosts for this)
 ```
 ec2-34-193-151-84.compute-1.amazonaws.com
